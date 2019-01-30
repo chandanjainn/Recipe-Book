@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse">
 <ul class="nav navbar-nav">
   <li><a href="#" (click)="onSelect('recipe')">Recipies</a></li>
-  <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+  <li><a href="#" (click)="onSelect('shopping-list')">Shopping List <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
   <li class="dropdown" appDropdown>
@@ -15,9 +15,9 @@
      data-toggle="dropdown">Manage <span class="glyphicon glyphicon-cog"></span></a>
       <ul class="dropdown-menu">
         <li>
-          <a href="#">Save Changes</a></li>
+          <a href="#">Save Changes <span class="glyphicon glyphicon-ok"></span></a></li>
         <li>
-          <a href="#">Get Data</a></li>
+          <a href="#">Get Data <span class="glyphicon glyphicon-download-alt"></span></a></li>
       </ul>
   </li>
 </ul>

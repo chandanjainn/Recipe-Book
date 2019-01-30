@@ -7,7 +7,11 @@ export class DropdownDirective {
 @HostBinding('class.open') isOpen = false;
   constructor() { }
 
-  @HostListener('click') toggleDropdown(){
+  @HostListener('mouseover') toggleDropdown(){
     this.isOpen = !this.isOpen;
   }
+
+  @HostListener('mouseout') toggleDropdown2(){
+    this.isOpen = !this.isOpen;
+}
 }
