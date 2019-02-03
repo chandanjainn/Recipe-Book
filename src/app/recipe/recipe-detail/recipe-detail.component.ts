@@ -21,10 +21,10 @@ id:number;
   ngOnInit() {
 
     this.route.paramMap.subscribe(
-      (params  => {
+      params  => {
         this.id = +params.get('id');
         this.recipe= this.recipeService.getRecipeById(this.id);
-      }));
+      });
   }
 
   addToCart(){
