@@ -8,21 +8,25 @@ import { Ingredient } from './../../shared/ingredient.model';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit,OnDestroy {
-  ingredients : Ingredient[]=[];
-  subscription : Subscription;
-  constructor(private shoppingService : ShoppingListService) { }
+export class ShoppingListComponent implements OnInit, OnDestroy {
+  ingredients: Ingredient[] = [];
+  subscription: Subscription;
+  constructor(private shoppingService: ShoppingListService) {}
 
   ngOnInit() {
     this.ingredients = this.shoppingService.getIngredients();
-    this.subscription=this.shoppingService.changedIngredients.
-    subscribe(()=>{
-      this.ingredients=this.shoppingService.getIngredients();
-    });
+    this.subscription = this.shoppingService.changedIngredients.subscribe(
+      () => {
+        this.ingredients = this.shoppingService.getIngredients();
+      }
+    );
+  }
+
+  onEdit(index: number) {
+    this.shoppingService.isEdit.next(index);
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

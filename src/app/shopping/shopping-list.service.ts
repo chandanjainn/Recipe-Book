@@ -11,11 +11,16 @@ export class ShoppingListService {
     new Ingredient('Dal', 1),
     new Ingredient('Onion', 2)
   ];
+  isEdit = new Subject<number>();
 
   constructor() {}
 
   getIngredients() {
     return this.ingredients.slice();
+  }
+
+  getIngredientById(id: number) {
+    return this.ingredients[id];
   }
 
   addNewIngredient(ing: Ingredient) {
@@ -25,5 +30,9 @@ export class ShoppingListService {
 
   addNewIngredients(ings: Ingredient[]) {
     this.ingredients.push(...ings);
+  }
+  updateIngredient(ing: Ingredient, id: number) {
+    this.ingredients[id] = ing;
+    this.changedIngredients.next();
   }
 }
