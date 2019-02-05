@@ -62,19 +62,29 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12">
-          <div class="row">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <div
+            class="row"
+            *ngFor="let ingredient of getControls(); let i = index"
+            [formGroupName]="i"
+            style="margin-top:10px"
+          >
             <div class="col-xs-8">
-              <label for="ingName">Ingredient Name</label>
-              <input type="text" id="ingName" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                formControlName="ingName"
+              />
             </div>
             <div class="col-xs-2">
-              <label for="ingAmount">Amount</label>
-              <input type="text" id="ingAmount" class="form-control" />
+              <input
+                type="text"
+                class="form-control"
+                formControlName="ingAmount"
+              />
             </div>
             <div class="col-xs-2">
-              <label for="clear">Clear</label>
-              <button type="button" id="clear" class="btn btn-danger">
+              <button type="button" class="btn btn-danger">
                 X
               </button>
             </div>
@@ -87,8 +97,19 @@
           <button type="button" class="btn btn-danger pull-right">
             Cancel
           </button>
-          <button type="submit" class="btn btn-success pull-right">
+          <button
+            type="submit"
+            class="btn btn-success pull-right"
+            [disabled]="!recipeForm.valid"
+          >
             Save
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary pull-right"
+            (click)="addIngredient()"
+          >
+            Add ingredient
           </button>
         </div>
       </div>
