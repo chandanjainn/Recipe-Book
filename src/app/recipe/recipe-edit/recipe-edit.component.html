@@ -84,7 +84,11 @@
               />
             </div>
             <div class="col-xs-2">
-              <button type="button" class="btn btn-danger">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="deleteIngredient(i)"
+              >
                 X
               </button>
             </div>
@@ -94,7 +98,11 @@
       <hr />
       <div class="row">
         <div class="col-xs-12 btn-toolbar">
-          <button type="button" class="btn btn-danger pull-right">
+          <button
+            type="button"
+            class="btn btn-danger pull-right"
+            (click)="doCancel()"
+          >
             Cancel
           </button>
           <button

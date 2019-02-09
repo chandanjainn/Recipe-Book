@@ -41,5 +41,10 @@ export class RecipeService {
     this.editedRecipies.next();
   }
 
+  deleteRecipe(id: number) {
+    this.recipes.splice(id, 1);
+    this.editedRecipies.next();
+  }
+
   constructor() {}
 }
