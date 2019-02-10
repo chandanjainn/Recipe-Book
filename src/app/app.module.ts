@@ -1,37 +1,29 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 import { HeaderComponent } from './header/header.component';
-import { ShoppingListComponent } from './shopping/shopping-list/shopping-list.component';
-import { ShoppingListEditComponent } from './shopping/shopping-list-edit/shopping-list-edit.component';
-import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
-import { RecipesComponent } from './recipe/recipes/recipes.component';
-import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
-import { RecipeItemComponent } from './recipe/recipe-item/recipe-item.component';
-import { DropdownDirective } from './shared/dropdown.directive';
+import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { RecipeHomeComponent } from './recipe/recipe-home/recipe-home.component';
-import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
-
+import { SharedModule } from './shared/shared.module';
+import { ShoppingModule } from './shopping/shopping.module';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent,
-    RecipeDetailComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    DropdownDirective,
     PageNotFoundComponent,
-    RecipeHomeComponent,
-    RecipeEditComponent
+    HomeComponent
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    ShoppingModule,
+    AuthModule,
+    AppRoutingModule,
+    HttpClientModule,
+    SharedModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,7 @@ import { Recipe } from './../recipes/recipe.model';
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
+  isRecipeListEmpty = true;
   constructor(
     private slService: ShoppingListService,
     private recipeService: RecipeService,
@@ -23,6 +24,9 @@ export class RecipeDetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('id');
       this.recipe = this.recipeService.getRecipeById(this.id);
+      if (this.recipe) {
+        this.isRecipeListEmpty = false;
+      }
     });
   }
 
