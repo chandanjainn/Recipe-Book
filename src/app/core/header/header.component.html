@@ -6,10 +6,18 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li
+          *ngIf="isAuthenticated()"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exactly: true }"
         >
           <a [routerLink]="['/recipes']">Recipies</a>
+        </li>
+        <li
+          *ngIf="!isAuthenticated()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exactly: true }"
+        >
+          <a [routerLink]="['/home']">Recipies</a>
         </li>
         <li
           routerLinkActive="active"

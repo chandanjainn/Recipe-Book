@@ -5,6 +5,7 @@ import { HomeComponent } from './core/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'recipes', loadChildren: './recipe/recipe.module#RecipeModule' },
   { path: '**', component: PageNotFoundComponent }
 ];
