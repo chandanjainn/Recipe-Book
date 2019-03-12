@@ -11,23 +11,19 @@ export class AuthService {
   token?: string;
 
   signUpUser(email: string, pwd: string) {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, pwd)
-      .catch(error => console.log(error));
+    firebase.auth().createUserWithEmailAndPassword(email, pwd);
   }
 
   logIn(email: string, pwd: string) {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, pwd)
-      .then(response => {
+      .then(() => {
         this.router.navigate(['/recipes']);
         this.getTokenId().then(token => {
           this.token = token;
         });
-      })
-      .catch(error => console.log(error));
+      });
   }
 
   private getTokenId() {
