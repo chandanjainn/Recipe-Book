@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Recipe } from './recipes/recipe.model';
+import { NotificationService } from '../shared/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,25 @@ export class RecipeService {
   public addOrEditRecipe(recipe: Recipe, isEditMode: boolean, index: number) {
     if (!isEditMode) {
       this.recipes.push(recipe);
+      this.notifyChanges('added');
     } else {
       this.recipes[index] = recipe;
+      this.notifyChanges('modified');
     }
-    this.editedRecipies.next();
+    setTimeout(() => this.editedRecipies.next(), 500);
+  }
+
+  private notifyChanges(action: string) {
+    this.notificationService.showSuccess(
+      'Recipe ' +
+        action +
+        ' successfully. Click on Manage->Save Changes to save them.'
+    );
   }
 
   deleteRecipe(id: number) {
     this.recipes.splice(id, 1);
+    this.notifyChanges('deleted');
     this.editedRecipies.next();
   }
 
@@ -35,5 +47,5 @@ export class RecipeService {
     this.editedRecipies.next();
   }
 
-  constructor() {}
+  constructor(private notificationService: NotificationService) {}
 }

@@ -107,11 +107,20 @@
             Cancel
           </button>
           <button
+            *ngIf="!isEditMode"
             type="submit"
             class="btn btn-success pull-right"
             [disabled]="!recipeForm.valid"
           >
-            Save
+            Add Recipe
+          </button>
+          <button
+            *ngIf="isEditMode"
+            type="submit"
+            class="btn btn-success pull-right"
+            [disabled]="!recipeForm.valid"
+          >
+            Modify
           </button>
           <button
             type="button"

@@ -8,12 +8,14 @@ export class NotificationService {
   constructor(public snackBar: MatSnackBar) {}
 
   showSuccess(message: string): void {
-    this.snackBar.open(message);
+    this.snackBar.open(message, 'X', {
+      duration: 2000
+    });
   }
 
   showError(message: string): void {
     this.snackBar.open(message, 'X', {
-      duration: 5000
+      duration: 3000
     });
   }
 }

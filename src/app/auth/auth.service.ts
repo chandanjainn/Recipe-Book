@@ -2,16 +2,28 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import { Router } from '@angular/router';
+import { NotificationService } from '../shared/notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private notificationService: NotificationService
+  ) {}
   token?: string;
 
   signUpUser(email: string, pwd: string) {
-    firebase.auth().createUserWithEmailAndPassword(email, pwd);
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, pwd)
+      .then(() => {
+        this.notificationService.showSuccess('User registeration successfull!');
+        setTimeout(() => {
+          this.router.navigate(['/signIn']);
+        }, 1500);
+      });
   }
 
   logIn(email: string, pwd: string) {
