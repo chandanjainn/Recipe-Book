@@ -9,7 +9,7 @@ import { initializeApp } from 'firebase';
 export class AppComponent implements OnInit {
   ngOnInit() {
     initializeApp({
-      apiKey: '',
+      apiKey: 'AIzaSyB8BTPIzgMDtLDQ7qn--eIkJICknsoMeAE',
       authDomain: 'book-of-spices.firebaseapp.com'
     });
   }
